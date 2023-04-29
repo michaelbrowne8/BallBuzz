@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Washington Capitols.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -80,7 +80,6 @@ struct PlayerDetailView: View {
                 
                 if playerDetailVM.isLoading || loadingStats {
                     ProgressView()
-                        .tint(.red)
                         .scaleEffect(4)
                 } else if noStatsAvailable ?? true {
                     Text("Player has no games played this season!")

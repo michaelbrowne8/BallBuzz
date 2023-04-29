@@ -70,7 +70,15 @@ class StatFinderViewModel: ObservableObject {
             stats1.game.date > stats2.game.date
         })
         
-        self.last10Stats = Array(self.playerStats[..<10])
+        self.playerStats = self.playerStats.filter({ stats in
+            Int(stats.min) != 0
+        })
+        
+        if self.playerStats.count < 10 {
+            self.last10Stats = self.playerStats
+        } else {
+            self.last10Stats = Array(self.playerStats[..<10])
+        }
         self.playoffStats = self.playerStats.filter({ stats in
             stats.game.postseason
         })

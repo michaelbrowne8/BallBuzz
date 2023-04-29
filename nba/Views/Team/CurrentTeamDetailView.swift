@@ -40,7 +40,6 @@ struct CurrentTeamDetailView: View {
             
             if teamDetailVM.isLoading || loadingStats {
                 ProgressView()
-                    .tint(.red)
                     .scaleEffect(4)
             } else if teamDetailVM.games.isEmpty {
                 Text("No games available for this team in the selected season!")

@@ -20,10 +20,6 @@ struct ConversationView: View {
         
         VStack {
             ZStack {
-                if commentsToShow.isEmpty {
-                    Text("No comments yet!")
-                }
-                
                 List(commentsToShow) { comment in
                     HStack {
                         Text(comment.username)
@@ -35,6 +31,10 @@ struct ConversationView: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(Color.accentColor, lineWidth: 2)
+                }
+                
+                if commentsToShow.isEmpty {
+                    Text("No comments yet!")
                 }
             }
             
@@ -50,7 +50,11 @@ struct ConversationView: View {
             
             Button("Post") {
                 Task {
-                    let username = Auth.auth().currentUser?.displayName ?? "User"
+                    var username = Auth.auth().currentUser?.email ?? "User"
+                    
+                    if username.contains("@") {
+                        username = username.components(separatedBy: "@")[0]
+                    }
                     
                     _  = await conversationVM.saveComment(comment: Comment(playerId: player.id, username: username, comment: newCommentText))
                 }

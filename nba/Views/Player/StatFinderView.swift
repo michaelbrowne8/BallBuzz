@@ -68,7 +68,6 @@ struct StatFinderView: View {
             }
             if statFinderVM.isLoading {
                 ProgressView()
-                    .tint(.red)
                     .scaleEffect(4)
             } else if getStatsToDisplay().isEmpty {
                 Text("No stats available for this selection!")
@@ -120,6 +119,8 @@ struct StatFinderView: View {
                 }
                 .padding(.horizontal)
             }
+            
+            Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color("Feature") , for: .navigationBar)
